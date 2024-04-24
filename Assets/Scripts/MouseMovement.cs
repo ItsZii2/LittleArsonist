@@ -9,15 +9,27 @@ public class MouseMovement : MonoBehaviour
 
     float xRotation = 0f;
     float YRotation = 0f;
+    [SerializeField] private ParticleSystem flameThrower;
 
     void Start()
     {
         //Locking the cursor to the middle of the screen and making it invisible
         Cursor.lockState = CursorLockMode.Locked;
+
+        flameThrower.Stop();
     }
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            flameThrower.Play();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            flameThrower.Stop();
+        }
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -25,7 +37,7 @@ public class MouseMovement : MonoBehaviour
         xRotation -= mouseY;
 
         //we clamp the rotation so we cant Over-rotate (like in real life)
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -65f, 40f); //(rotation sideways, rotation up, rotation down)
 
         //control rotation around y axis (Look up and down)
         YRotation += mouseX;
