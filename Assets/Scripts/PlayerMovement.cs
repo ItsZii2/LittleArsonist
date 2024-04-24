@@ -14,38 +14,58 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    public AudioSource walkingSound;
+
     Vector3 velocity;
 
     bool isGrounded;
 
+    void Start()
+    {
+        walkingSound.Stop();
+    }
+
     // Update is called once per frame
     void Update()
+{
+    //checking if we hit the ground to reset our falling velocity, otherwise we will fall faster the next time
+    isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+    if (isGrounded && velocity.y < 0)
     {
-        //checking if we hit the ground to reset our falling velocity, otherwise we will fall faster the next time
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        //right is the red Axis, foward is the blue axis
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        //check if the player is on the ground so he can jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            //the equation for jumping
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
+        velocity.y = -2f;
     }
+
+    float x = Input.GetAxis("Horizontal");
+    float z = Input.GetAxis("Vertical");
+
+    //right is the red Axis, foward is the blue axis
+    Vector3 move = transform.right * x + transform.forward * z;
+
+    controller.Move(move * speed * Time.deltaTime);
+
+    // Play walking sound when moving
+    if (x != 0 || z != 0)
+    {
+        if (!walkingSound.isPlaying)
+        {
+            walkingSound.Play();
+        }
+    }
+    else
+    {
+        walkingSound.Stop();
+    }
+
+    //check if the player is on the ground so he can jump
+    if (Input.GetButtonDown("Jump") && isGrounded)
+    {
+        //the equation for jumping
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    velocity.y += gravity * Time.deltaTime;
+
+    controller.Move(velocity * Time.deltaTime);
+}
 }

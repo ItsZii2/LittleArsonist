@@ -9,7 +9,10 @@ public class MouseMovement : MonoBehaviour
 
     float xRotation = 0f;
     float YRotation = 0f;
-    [SerializeField] private ParticleSystem flameThrower;
+    
+
+    public ParticleSystem flameThrower;
+    public AudioSource flameSound;
 
     void Start()
     {
@@ -17,6 +20,7 @@ public class MouseMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         flameThrower.Stop();
+        flameSound.Stop();
     }
 
     void Update()
@@ -24,10 +28,13 @@ public class MouseMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             flameThrower.Play();
+            flameSound.Play();
+
         }
         if (Input.GetMouseButtonUp(0))
         {
             flameThrower.Stop();
+            flameSound.Stop();
         }
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
