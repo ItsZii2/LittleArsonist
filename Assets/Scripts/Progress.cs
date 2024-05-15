@@ -41,11 +41,6 @@ public class Progress : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene(2);
-    }
-
-    public void restartGame()
-    {
-        SceneManager.LoadScene(0);
+        Initiate.Fade("EndScene", Color.black, 1.0f);
     }
 }
