@@ -381,8 +381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.6897888, y: -0.68969727}
+  m_SizeDelta: {x: 12.4144, y: 12.4146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &342439637
 AudioSource:
@@ -897,6 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fe28156dc777a42adcfa97a0b0d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: 
+  loadToColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1608039010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fe28156dc777a42adcfa97a0b0d4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: 
+  loadToColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
