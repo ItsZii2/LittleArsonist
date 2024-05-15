@@ -357,7 +357,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 700.6862, y: 940.41}
+  m_SizeDelta: {x: 704.9374, y: 1059.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273208335
 MonoBehaviour:
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 17.518158, z: -11.044739, w: 35.577423}
+  m_margin: {x: 0, y: 17.518158, z: -11.044739, w: 2.5553284}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2127731711}
   m_Direction: 2
   m_Value: 0.9999998
-  m_Size: 0.36283624
+  m_Size: 0.3220831
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
