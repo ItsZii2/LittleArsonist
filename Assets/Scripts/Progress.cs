@@ -32,6 +32,7 @@ public class Progress : MonoBehaviour
         {
             gameEnd();
         }
+        
     }
 
     void gainProgress(float gain)

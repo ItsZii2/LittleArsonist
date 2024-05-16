@@ -16,6 +16,17 @@ public class FireController : MonoBehaviour
 
     public bool IsFireSpreading { get { return isFireSpreading; } }
 
+    private AudioSource burnSound;
+    public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
+
+
+
+    void Start()
+    {
+        burnSound = wildFirePrefab.GetComponent<AudioSource>();
+    }
+    
+
     // Custom function to find the closest point on a mesh collider
     private Vector3 FindClosestPointOnMesh(MeshCollider meshCollider, Vector3 point)
     {
@@ -70,6 +81,7 @@ public class FireController : MonoBehaviour
             if (!isFireSpreading)
             {
                 StartCoroutine(DelayParticleEmission());
+                
             }
         }
     }
@@ -91,6 +103,9 @@ public class FireController : MonoBehaviour
         }
 
         fireUsage += 1.5f;
+
+        burnSound.rolloffMode = rolloffMode;
+        burnSound.maxDistance = 400;
 
         isFireSpreading = false;
     }
