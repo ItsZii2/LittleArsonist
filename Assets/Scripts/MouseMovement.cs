@@ -53,4 +53,8 @@ public class MouseMovement : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, YRotation, 0f);
 
     }
+    public bool IsFlameThrowerPlaying()
+    {
+        return flameThrower.isPlaying;
+    }
 }

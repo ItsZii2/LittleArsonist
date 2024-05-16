@@ -9,6 +9,7 @@ public class Progress : MonoBehaviour
     public Slider progressSlider;
     public float maxProgress = 100f;
     public float progress;
+    public FireController fireController;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +20,15 @@ public class Progress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        progress = fireController.GetFireUsed();
+        print("Current game progress: " + progress);
+
         if (progressSlider.value != progress)
         {
             progressSlider.value = progress;
         }
-        if (Input.GetButtonDown("Jump"))
-        {
-            gainProgress(5);
-        }
-        if (progressSlider.value == 100f)
+
+        if (progressSlider.value >= 100f)
         {
             gameEnd();
         }

@@ -21,6 +21,10 @@ public class SceneChanger : MonoBehaviour
         {
             StartCoroutine(WaitTime(7));
         }
+        if (sceneName == "LoadingScene")
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void restartGame()
@@ -29,7 +33,7 @@ public class SceneChanger : MonoBehaviour
     }
     public void startGame()
     {
-        Initiate.Fade("Game", loadToColor, 1.0f);
+        Initiate.Fade("LoadingScene", loadToColor, 1.0f);
     }
     public void showInstructions()
     {
