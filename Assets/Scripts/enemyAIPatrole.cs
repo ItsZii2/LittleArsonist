@@ -9,7 +9,15 @@ public class enemyAIPatrole : MonoBehaviour
 
     NavMeshAgent agent;
 
+    [SerializeField] private GameObject thisObject;
+
     [SerializeField] LayerMask groundLayer, playerLayer;
+
+    public Progress progressCheck;
+
+    private AudioSource manScreaming;
+    private bool isFire;
+    private bool isScreaming;
 
     //patrol
     Vector3 destPoint;
@@ -20,14 +28,23 @@ public class enemyAIPatrole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manScreaming = thisObject.GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("player");
+        manScreaming.Stop();
+        isScreaming = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         Patrol();
+        isFire = progressCheck.fireStarted();
+        if(isFire && !isScreaming)
+        {
+            manScreaming.Play();
+            isScreaming = true;
+        }
     }
 
     void Patrol()

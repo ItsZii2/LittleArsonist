@@ -39,6 +39,18 @@ public class Progress : MonoBehaviour
     {
         progress += gain;
     }
+
+    public bool fireStarted()
+    {
+        if (progress >=10f) 
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
     void gameEnd()
     {
         Cursor.lockState = CursorLockMode.None;
