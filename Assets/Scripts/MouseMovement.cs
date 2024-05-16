@@ -13,6 +13,8 @@ public class MouseMovement : MonoBehaviour
 
     public ParticleSystem flameThrower;
     public AudioSource flameSound;
+    public GameObject flameThrowerObj;
+    public GameObject flameThrowerObjWoods;
 
     void Start()
     {
@@ -21,11 +23,12 @@ public class MouseMovement : MonoBehaviour
 
         flameThrower.Stop();
         flameSound.Stop();
+        flameThrowerObj.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && flameThrowerObj.activeInHierarchy)
         {
             flameThrower.Play();
             flameSound.Play();

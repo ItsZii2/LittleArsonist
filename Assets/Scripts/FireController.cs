@@ -90,7 +90,7 @@ public class FireController : MonoBehaviour
             particleSystemMultiplier.PlayParticles();
         }
 
-        fireUsage += 1.1f;
+        fireUsage += 1.5f;
 
         isFireSpreading = false;
     }
