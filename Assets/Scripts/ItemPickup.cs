@@ -7,13 +7,17 @@ public class ItemPickup : MonoBehaviour
     public GameObject flameThrowerObj;
     public GameObject flameThrowerObjWoods;
     public GameObject progressBar;
+    public GameObject pickupSoundObj;
 
     public ParticleSystem flameThrower;
     public AudioSource flameSound;
+    private AudioSource pickUpSound;
 
     void Start()
     {
         progressBar.SetActive(false);
+        pickUpSound = pickupSoundObj.GetComponent<AudioSource>();
+        pickUpSound.Stop();
     }
 
     void OnTriggerStay(Collider other)
@@ -25,6 +29,7 @@ public class ItemPickup : MonoBehaviour
             flameThrower.Stop();
             flameSound.Stop(); 
             progressBar.SetActive(true);
+            pickUpSound.Play();
         }
     }
 }

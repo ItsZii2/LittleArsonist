@@ -10,11 +10,20 @@ public class Progress : MonoBehaviour
     public float maxProgress = 100f;
     public float progress;
     public FireController fireController;
+    public GameObject burningBeginningSoundObj;
+    public GameObject endGameSoundObj;
+
+    private AudioSource beginningSound;
+    private AudioSource endGameSound;
 
     // Start is called before the first frame update
     void Start()
     {
         progress = 0f;
+        beginningSound = burningBeginningSoundObj.GetComponent<AudioSource>();
+        beginningSound.Stop();
+        endGameSound = endGameSoundObj.GetComponent<AudioSource>();
+        endGameSound.Stop();
     }
 
     // Update is called once per frame
@@ -32,7 +41,15 @@ public class Progress : MonoBehaviour
         {
             gameEnd();
         }
-        
+        if (progressSlider.value >= 30f)
+        {
+            beginningSound.Play();
+        }
+        if (progressSlider.value >= 70f)
+        {
+            endGameSound.Play();
+        }
+
     }
 
     void gainProgress(float gain)
