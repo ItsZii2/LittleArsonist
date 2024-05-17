@@ -17,7 +17,6 @@ public class FireController : MonoBehaviour
     public bool IsFireSpreading { get { return isFireSpreading; } }
 
     private AudioSource burnSound;
-    public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
 
 
 
@@ -103,9 +102,6 @@ public class FireController : MonoBehaviour
         }
 
         fireUsage += 1.5f;
-
-        burnSound.rolloffMode = rolloffMode;
-        burnSound.maxDistance = 400;
 
         isFireSpreading = false;
     }
